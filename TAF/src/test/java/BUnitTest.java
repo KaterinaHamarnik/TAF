@@ -1,9 +1,9 @@
 import org.testng.annotations.Test;
 
-public class AUnitTest {
+public class BUnitTest extends BaseTest {
 
     @Test
-    public void firstTest(){
+    public void secondTest(){
         System.out.println("Hello world!!!");
     }
 
