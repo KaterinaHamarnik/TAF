@@ -6,6 +6,9 @@ public class AUnitTest extends BaseTest {
     public void firstTest(){
         System.out.println("Hello world!!!");
     }
+    public void test(){
+        System.out.println("Test is running!");
+    }
 
 
 }

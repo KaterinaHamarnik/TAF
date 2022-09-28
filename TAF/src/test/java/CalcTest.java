@@ -29,7 +29,7 @@ public class CalcTest extends BaseTest {
 
     @Test(timeOut = 1000)
     public void waitLongTimeTest() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @Test (invocationCount = 3, invocationTimeOut = 1000, threadPoolSize = 3)
