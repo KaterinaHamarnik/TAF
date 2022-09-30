@@ -55,9 +55,10 @@ public class CalcTest extends BaseTest{
         System.out.println("Деление на ноль");
     }
 
-    @Test (retryAnalyzer = Retry.class)
-    public void flakyTest(int a) {
-        if (a == 6) {
+    private int attempt = 1;
+    @Test (retryAnalyzer = Retr.class)
+    public void flakyTest() {
+        if (attempt == 4) {
             Assert.assertTrue(true);
         } else {
             System.out.println("A isn't 6");
