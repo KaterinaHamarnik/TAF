@@ -52,7 +52,12 @@ public class CalcTest extends BaseTest{
 
     @Test (expectedExceptions = IllegalArgumentException.class)
     public void testExceptions() {
-        System.out.println("Деление на ноль");
+        Assert.assertEquals(calculator.div(6, 0), Integer.SIZE, "Результат деления чисел на '0' неверен");
+    }
+
+    @Test
+    public void testDivisionDoubleByZero() {
+        Assert.assertEquals(calculator.div(12.5, 0), Double.POSITIVE_INFINITY, "Результат деления дробных чисел на '0' неверен");
     }
 
     private int attempt = 1;
