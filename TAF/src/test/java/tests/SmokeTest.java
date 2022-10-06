@@ -21,33 +21,59 @@ public class SmokeTest {
     }
 
     @Test
-    public void a_validateIKTCalculationTest(){
-        driver.get("https://clinic-cvetkov.ru/company/kalkulyator-imt/");
-        WebElement weight = driver.findElement(By.name("weight"));
-        WebElement height = driver.findElement(By.name("height"));
-        WebElement button = driver.findElement(By.id("calc-mass-c"));
+    public void validateElectricFloorHeatingCalculatorTest() throws InterruptedException {
+        driver.get("https://kermi-fko.ru/raschety/Calc-Rehau-Solelec.aspx");
+        WebElement weight = driver.findElement(By.id("el_f_width"));
+        WebElement height = driver.findElement(By.id("el_f_lenght"));
+        WebElement heatLoss = driver.findElement(By.id("el_f_losses"));
+        WebElement button = driver.findElement(By.name("button"));
+        WebElement selectWebElement = driver.findElement(By.id("room_type"));
+        Select selectRoomType = new Select(selectWebElement);
+        WebElement selectWebElement1 = driver.findElement(By.id("heating_type"));
+        Select selectHeatingType = new Select(selectWebElement1);
 
-        weight.sendKeys("58");
-        height.sendKeys("183");
+
+        weight.sendKeys("6");
+        height.sendKeys("6");
+        selectRoomType.selectByValue("2");
+        selectHeatingType.selectByValue("3");
+        heatLoss.sendKeys("41");
+
         button.click();
+        Thread.sleep(2000);
 
-        WebElement result = driver.findElement(By.id("imt-result"));
-        Assert.assertEquals(result.getText(), "17.3 - Недостаточная (дефицит) масса тела");
+        WebElement resultCablePower = driver.findElement(By.id("floor_cable_power"));
+        Assert.assertEquals(resultCablePower.getAttribute("value"), "23");
+        WebElement resultSpecCablePower = driver.findElement(By.id("spec_floor_cable_power"));
+        Assert.assertEquals(resultSpecCablePower.getAttribute("value"), "1");
     }
 
     @Test
     public void validateSKF() throws InterruptedException {
-        driver.get("http://13gp.by/informatsiya/meditsinskie-kalkulyatory/995-raschet-skorosti-klubochkovoj-filtratsii-skf");
+        driver.get("https://calc.by/building-calculators/laminate.html");
+        WebElement heightRoom = driver.findElement(By.id("ln_room_id"));
+        WebElement weightRoom = driver.findElement(By.id("wd_room_id"));
+        WebElement heightLaminate = driver.findElement(By.id("ln_lam_id"));
+        WebElement weightLaminate = driver.findElement(By.id("wd_lam_id"));
+        WebElement button = driver.findElement(By.className("calc-btn"));
+        WebElement selectWebElement = driver.findElement(By.id("laying_method_laminate"));
+        WebElement radio = driver.findElement(By.id("direction-laminate-id1"));
 
 
-        WebElement selectWebElement = driver.findElement(By.id("oSex"));
-        Select selectSex = new Select(selectWebElement);
-        selectSex.selectByIndex(1);
-        Thread.sleep(2000);
-        selectSex.selectByValue("0");
-        Thread.sleep(2000);
-        selectSex.selectByVisibleText("женский");
-        Thread.sleep(2000);
+
+        heightRoom.clear();
+        heightRoom.sendKeys("500");
+        weightRoom.clear();
+        weightRoom.sendKeys("400");
+        heightLaminate.clear();
+        heightLaminate.sendKeys("2000");
+        weightLaminate.clear();
+        weightLaminate.sendKeys("200");
+        radio.click();
+
+        button.click();
+        Thread.sleep(5000);
+
     }
 
     @AfterMethod
