@@ -19,17 +19,17 @@ public class ReadProperties {
         return properties.getProperty("url");
     }
 
-public static String browserName() {
+    public static String browserName() {
         return properties.getProperty("browser");
     }
 
     public static String username() {
-         return properties.getProperty("username");
-     }
+        return properties.getProperty("username");
+    }
 
-     public static String password() {
-         return properties.getProperty("password");
-     }
+    public static String password() {
+        return properties.getProperty("password");
+    }
 
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");

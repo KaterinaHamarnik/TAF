@@ -6,8 +6,8 @@ import io.github.bonigarcia.wdm.config.DriverManagerType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class BrowsersService {
     private WebDriver driver = null;
@@ -35,11 +35,11 @@ public class BrowsersService {
 
                 driver = new FirefoxDriver();
                 break;
-                case "edge":
-                driverManagerType = DriverManagerType.EDGE;
+            case "safari":
+                driverManagerType = DriverManagerType.SAFARI;
                 WebDriverManager.getInstance(driverManagerType).setup();
 
-                driver = new EdgeDriver();
+                driver = new SafariDriver();
                 break;
             default:
                 System.out.println("Browser " + ReadProperties.browserName() + " is not supported.");
@@ -48,7 +48,7 @@ public class BrowsersService {
     }
 
     public WebDriver getDriver() {
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
 
         return driver;
