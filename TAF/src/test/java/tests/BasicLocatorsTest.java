@@ -3,6 +3,7 @@ package tests;
 import configuration.ReadProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -23,30 +24,20 @@ public class BasicLocatorsTest {
     }
 
     @Test
-    public void BasicLocatorsTest(){
+    public void saucedemoTest() {
         driver.get(ReadProperties.getUrl());
 
-        // Find webElement by ID
-        driver.findElement(By.id("name")).sendKeys(ReadProperties.username());
+        driver.findElement(By.cssSelector("#user-name")).sendKeys(ReadProperties.username());
 
-        // Find webElement by name
-        driver.findElement(By.name("password")).sendKeys(ReadProperties.password());
+        driver.findElement(By.id("password")).sendKeys(ReadProperties.password());
 
-        // Find webElement by TagName
-        driver.findElement(By.tagName("button")).click();
-    }
+        driver.findElement(By.cssSelector("#login-button")).click();
 
-    @Test
-    public void BasicLocatorsTest2(){
-        driver.get(ReadProperties.getUrl());
+        driver.findElement(By.xpath("//button[contains(@id, 'add-to-cart-sauce-labs-backpack')]")).click();
 
-        // Find webElement by linkText
-        driver.findElement(By.linkText("Forgot your password?")).click();
+        driver.findElement(By.className("shopping_cart_link")).click();
 
-        // Find webElement by className
-        driver.findElement(By.className("forgot_passwordpage-request-cancel")).click();
-
-        // Find webElement by linkText
-        driver.findElement(By.partialLinkText("your password?")).click();
+        Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Sauce Labs Backpack']")).getText(), "Sauce Labs Backpack");
+        Assert.assertEquals(driver.findElement(By.cssSelector("div.inventory_item_price")).getText(), "$29.99");
     }
 }
