@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.BrowsersService;
+import services.SimpleDriver;
 
 public class SmokeTest {
 
@@ -56,7 +57,6 @@ public class SmokeTest {
         WebElement heightLaminate = driver.findElement(By.id("ln_lam_id"));
         WebElement weightLaminate = driver.findElement(By.id("wd_lam_id"));
         WebElement button = driver.findElement(By.className("calc-btn"));
-        WebElement selectWebElement = driver.findElement(By.id("laying_method_laminate"));
         WebElement radio = driver.findElement(By.id("direction-laminate-id1"));
 
 
@@ -72,7 +72,10 @@ public class SmokeTest {
         radio.click();
 
         button.click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+
+        Assert.assertEquals(driver.findElement(By.cssSelector(".calc-result>div:nth-child(1)>span")).getText(), "53");
+        Assert.assertEquals(driver.findElement(By.cssSelector(".calc-result>div:nth-child(2)>span")).getText(), "7");
 
     }
 
