@@ -35,4 +35,3 @@ public class DashboardPage extends BasePage {
 
     public boolean isHeaderTitleLabelDisplayed() { return getHeaderTitleLabel().isDisplayed(); }
 }
-
