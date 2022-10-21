@@ -5,11 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import services.BrowsersService;
-import steps.LoginStep;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected LoginStep loginStep;
 
     @BeforeMethod
     public void setUp() {
