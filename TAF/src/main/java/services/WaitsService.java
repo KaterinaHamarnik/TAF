@@ -27,11 +27,11 @@ public class WaitsService {
         wait = new WebDriverWait(driver, Duration.ofSeconds(ReadProperties.timeout()));
     }
 
-    public WebElement waitForVisibilityBy(By by) {
+    public WebElement waitForVisibilityBy(By by){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    public WebElement waitForVisibility(WebElement webElement) {
+    public WebElement waitForVisibilityBy(WebElement webElement){
         return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
@@ -47,7 +47,7 @@ public class WaitsService {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public WebElement fluentWaitForElement(By by) {
+    public WebElement fluentWaitForElement(By by){
         Wait<WebDriver> fluent = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofMillis(50))
@@ -56,3 +56,4 @@ public class WaitsService {
         return fluent.until(driver -> driver.findElement(by));
     }
 }
+

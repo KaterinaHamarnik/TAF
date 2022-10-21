@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class JSTest extends BaseTest {
+public class JSTests extends BaseTest {
 
     @Test
     public void jsTest() throws InterruptedException {
@@ -17,12 +17,6 @@ public class JSTest extends BaseTest {
         javascriptExecutor.executeScript("arguments[0].click();", webElement);
 
         Thread.sleep(5000);
-
-
-        String s = (String) javascriptExecutor.executeScript("return document.getElementsByName('txtSearchText')[0].value");
-
-        WebElement w1 = driver.findElement(By.name("txtSearchText"));
-        String s = (String) javascriptExecutor.executeScript("return arguments[0].value", w1);
     }
 
     @Test

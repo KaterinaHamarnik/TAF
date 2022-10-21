@@ -27,9 +27,8 @@ public class WaitsTest extends BaseTest {
         Assert.assertTrue(driver.findElement(By.cssSelector("#finish h4")).isDisplayed());
     }
 
-
     @Test
-    public void presenceOfElementTest1() {
+    public void presenceOfElementTest1() throws InterruptedException {
         driver.get("http://the-internet.herokuapp.com/dynamic_loading/1");
         WaitsService wait = new WaitsService(driver, Duration.ofSeconds(15));
 
