@@ -6,13 +6,15 @@
 
     <groupId>org.example</groupId>
     <artifactId>TAF</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.8.10</aspectj.version>
+        <testing.version>7.6.1</testing.version>
+        <test.suite.filename>general.xml</test.suite.filename>
     </properties>
 
     <dependencies>
@@ -31,6 +33,11 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.19.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,7 +51,7 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <suiteXmlFile>target/test-classes/group.xml</suiteXmlFile>
+                        <suiteXmlFile>target/test-classes/${test.suite.filename}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
@@ -55,7 +62,16 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <reportVersion>2.7.0</reportVersion>
+                    <buildDirectory>.</buildDirectory>
+                    <reportDirectory>target/allure-results</reportDirectory>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>
