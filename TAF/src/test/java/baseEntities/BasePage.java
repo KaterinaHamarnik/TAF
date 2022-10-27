@@ -14,13 +14,17 @@ public abstract class BasePage {
         waitsService = new WaitsService(driver);
     }
 
+    public BasePage(WebDriver driver, boolean openPage) {
+        this.driver = driver;
+        waitsService = new WaitsService(driver);
+    }
+
     protected abstract By getPageIdentifier();
 
     public boolean isPageOpened() {
         return driver.findElement(getPageIdentifier()).isDisplayed();
+
     }
 
-    public void openPageByUrl(String pagePath) {
-        driver.get(ReadProperties.getUrl() + pagePath);
-    }
+    public abstract void openPage();
 }

@@ -23,6 +23,11 @@ public class LoginPage extends BasePage {
         return loginButtonLocator;
     }
 
+    @Override
+    public void openPage() {
+
+    }
+
     // Блок атомарных методов
     public WebElement getEmailInput() { return driver.findElement(emailInputLocator); }
     public WebElement getPswInput() { return driver.findElement(pswInputLocator); }
