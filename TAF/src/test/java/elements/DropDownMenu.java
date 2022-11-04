@@ -27,7 +27,7 @@ public class DropDownMenu {
     }
 
     public void helpDropdownIsVisible(){
-        driver.findElement(By.id("navigation-user")).click();
-        driver.findElement(By.id("navigation-user-settings")).click();
+        driver.findElement(By.id("navigation-menu")).click();
+        driver.findElement(By.xpath("//div/ul/li/a[@href=\"https://www.gurock.com/testrail/docs/user-guide/getting-started\"]")).click();
     }
 }
