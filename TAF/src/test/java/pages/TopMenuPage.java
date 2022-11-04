@@ -19,11 +19,6 @@ public class TopMenuPage extends BasePage {
         return pageIdentifier;
     }
 
-    @Override
-    public void openPage() {
-
-    }
-
     // Блок атомарных методов
     //public WebElement getHeaderTitleLabel() { return driver.findElement(headerTitleLabelLocator); }
 

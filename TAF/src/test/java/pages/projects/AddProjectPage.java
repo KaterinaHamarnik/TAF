@@ -16,11 +16,6 @@ public class AddProjectPage extends BaseProjectPage {
         return null;
     }
 
-    @Override
-    public void openPage() {
-
-    }
-
     public WebElement getSaveButton() {
         return driver.findElement(saveButtonLocator);
     }

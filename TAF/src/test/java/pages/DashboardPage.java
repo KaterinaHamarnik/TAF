@@ -26,11 +26,9 @@ public class DashboardPage extends BasePage {
         return headerTitleLabelLocator;
     }
 
-    @Override
-    public void openPage() {
-
+    public void openPageByUrl() {
+        super.openPageByUrl(pagePath);
     }
-
 
     // Блок атомарных методов
     public WebElement getHeaderTitleLabel() { return driver.findElement(headerTitleLabelLocator); }

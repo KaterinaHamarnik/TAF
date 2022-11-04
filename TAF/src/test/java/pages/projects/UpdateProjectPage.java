@@ -12,10 +12,4 @@ public class UpdateProjectPage extends BaseProjectPage {
     protected By getPageIdentifier() {
         return null;
     }
-
-    @Override
-    public void openPage() {
-
-    }
 }
-
