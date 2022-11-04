@@ -11,7 +11,7 @@ public class LoginTest extends BaseTest {
 
 
     @Test
-    public void successLoginTest1() {
+    public void successLoginTest1() throws InterruptedException {
         ProjectsStep projectsStep = new ProjectsStep(driver);
 
         loginStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
@@ -23,6 +23,8 @@ public class LoginTest extends BaseTest {
         projectsStep.chooseRadioButtonForNumber(2);
 
         projectsStep.dropDownMenu();
+
+        Thread.sleep(6000);
     }
 
 }

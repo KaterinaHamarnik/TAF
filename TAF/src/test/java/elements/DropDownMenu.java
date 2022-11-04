@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import services.WaitsService;
 
 import java.time.Duration;
+import java.util.List;
 
 public class DropDownMenu {
     private UIElement uiElement;
@@ -26,23 +27,7 @@ public class DropDownMenu {
     }
 
     public void helpDropdownIsVisible(){
-        driver.findElement(By.id("navigation-menu")).click();
-        //Select menu = new Select(driver.findElement(By.xpath((".//a[contains(@onclick, 'this.blur(); App.Help.showAbout(); return false;')]"))));
-       // menu.selectByVisibleText("                About TestRail            ");
-
-        driver.findElement(By.xpath("//a[text()='Gurock Blog']")).isDisplayed();
-        driver.findElement(By.xpath("//a[text()='Gurock Blog]")).click();
-
-        //button.click();
-
-//        WebElement webElement = driver.findElement(By.cssSelector("[href='javascript:void(0)']"));
-//        Actions actions = new Actions(driver);
-//        actions
-//                .click(driver.findElement(By.id("navigation-menu")))
-//                .moveToElement(webElement)
-//                .click(webElement)
-//                .build()
-//                .perform();
-//        driver.findElement(By.className("dialog-logo")).isDisplayed();
+        driver.findElement(By.id("navigation-user")).click();
+        driver.findElement(By.id("navigation-user-settings")).click();
     }
 }
