@@ -1,7 +1,6 @@
 package pages;
 
 import baseEntities.BasePage;
-import configuration.ReadProperties;
 import elements.Button;
 import elements.UIElement;
 import org.openqa.selenium.By;
