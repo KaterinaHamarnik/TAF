@@ -1,6 +1,6 @@
 import org.testng.annotations.Test;
 
-public class AUnitTest {
+public class BUnitTest {
 
     @Test
     public void firstTest(){
