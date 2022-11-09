@@ -1,18 +1,17 @@
 package steps;
 
-import baseEntities.BaseStep;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
 import pages.LoginPage;
 
-public class LoginStep extends BaseStep {
+import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.webdriver;
+
+public class LoginStep {
     LoginPage loginPage;
 
-    public LoginStep(WebDriver driver) {
-        super(driver);
-
-        loginPage = new LoginPage(driver);
+    public LoginStep() {
+        loginPage = new LoginPage(webdriver().object());
     }
 
     public void login(String email, String psw) {
@@ -25,15 +24,12 @@ public class LoginStep extends BaseStep {
     public DashboardPage loginSuccessful(String email, String psw) {
         login(email, psw);
 
-        return new DashboardPage(driver);
+        return page(DashboardPage.class);
     }
 
     public LoginPage loginIncorrect(String email, String psw) {
         login(email, psw);
 
-        return loginPage;
-    }
-
-    public void logout() {
+        return page(LoginPage.class);
     }
 }
