@@ -5,15 +5,22 @@ import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CheckoutPage;
+import pages.ProductsPage;
+import steps.CheckoutStep;
+import steps.LoginStep;
+
+import static com.codeborne.selenide.Selenide.open;
 
 public class CheckoutTest extends BaseTest {
     CheckoutPage checkoutPage;
 
     @Test
     public void successCheckout() throws InterruptedException {
-        loginStep.login(ReadProperties.username(), ReadProperties.password());
+        LoginStep loginStep = open("", LoginStep.class);
+        loginStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
         Thread.sleep(4000);
 
+        CheckoutStep checkoutStep = open("", CheckoutStep.class);
         checkoutStep.successAddToShoppingCart();
         Thread.sleep(2000);
 
@@ -23,22 +30,12 @@ public class CheckoutTest extends BaseTest {
         checkoutStep.finishButton();
     }
 
-    @Test
-    public void infoCheckoutIncorrect() throws InterruptedException {
-        loginStep.login(ReadProperties.username(), ReadProperties.password());
-        Thread.sleep(4000);
 
-        checkoutStep.successAddToShoppingCart();
-        Thread.sleep(2000);
-
-        Assert.assertEquals(
-                checkoutStep.infoCheckoutIncorrect("", ReadProperties.password(), ReadProperties.postalCode())
-                        .getErrorTextElement().getText()
-                , "");
-    }
 
     @Test
     public void infoOfElementFromCheckout() throws InterruptedException {
+        LoginStep loginStep = open("", LoginStep.class);
+        CheckoutStep checkoutStep = open("", CheckoutStep.class);
         loginStep.login(ReadProperties.username(), ReadProperties.password());
         Thread.sleep(4000);
 
@@ -58,6 +55,8 @@ public class CheckoutTest extends BaseTest {
 
     @Test
     public void returnToProducts() throws InterruptedException {
+        LoginStep loginStep = open("", LoginStep.class);
+        CheckoutStep checkoutStep = open("", CheckoutStep.class);
         loginStep.login(ReadProperties.username(), ReadProperties.password());
         Thread.sleep(4000);
 
@@ -75,6 +74,8 @@ public class CheckoutTest extends BaseTest {
 
     @Test
     public void returnToCart() throws InterruptedException {
+        LoginStep loginStep = open("", LoginStep.class);
+        CheckoutStep checkoutStep = open("", CheckoutStep.class);
         loginStep.login(ReadProperties.username(), ReadProperties.password());
         Thread.sleep(4000);
 

@@ -1,35 +1,52 @@
 package pages;
 
-import baseEntities.BasePage;
-import configuration.ReadProperties;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class LoginPage extends BasePage {
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+
+
+import static com.codeborne.selenide.Selenide.$;
+
+public class LoginPage {
     // Блок описания селекторов для элементов
-    private final By emailInputLocator = By.id("user-name");
+    private final By userNameInputLocator = By.id("user-name");
     private final By pswInputLocator = By.id("password");
     private final By loginButtonLocator = By.id("login-button");
-    private final By errorTextLocator = By.className("error-message-container");
+    private final By errorTextLocator = By.tagName("h3");
 
-    // Блок инициализации страницы
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
 
-    @Override
-    protected By getPageIdentifier() {
-        return loginButtonLocator;
+    public SelenideElement getPageIdentifier() {
+        return $(loginButtonLocator).shouldBe(Condition.visible);
     }
 
     // Блок атомарных методов
-    public WebElement getEmailInput() { return driver.findElement(emailInputLocator); }
-    public WebElement getPswInput() { return driver.findElement(pswInputLocator); }
-    public WebElement getLoginButton() { return driver.findElement(loginButtonLocator); }
+    public SelenideElement getUserNameInputLocator() {
+        return $(userNameInputLocator).shouldBe(Condition.visible);
+    }
 
-    public void setEmail(String value) { getEmailInput().sendKeys(value); }
-    public void setPsw(String value) { getPswInput().sendKeys(value); }
-    public void clickLoginButton() { getLoginButton().click(); }
-    public WebElement getErrorTextElement() { return driver.findElement(errorTextLocator); }
+    public SelenideElement getPswInput() {
+        return $(pswInputLocator).shouldBe(Condition.visible);
+    }
+
+    public SelenideElement getLoginButton() {
+        return $(loginButtonLocator).shouldBe(Condition.visible);
+    }
+
+    public void setEmail(String value) {
+        getUserNameInputLocator().setValue(value);
+    }
+
+    public void setPsw(String value) {
+        getPswInput().setValue(value);
+    }
+
+    public void clickLoginButton() {
+        getLoginButton().click();
+    }
+
+    public SelenideElement getErrorTextElement() {
+        return $(errorTextLocator).shouldBe(Condition.visible);
+    }
+
 }

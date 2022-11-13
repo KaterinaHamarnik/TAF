@@ -1,39 +1,34 @@
 package steps;
 
-import baseEntities.BaseStep;
-import configuration.ReadProperties;
-import org.openqa.selenium.WebDriver;
-import pages.ProductsPage;
 import pages.LoginPage;
+import pages.ProductsPage;
 
-public class LoginStep extends BaseStep {
+import static com.codeborne.selenide.Selenide.page;
+
+
+public class LoginStep {
     LoginPage loginPage;
+    ProductsPage productsPage;
 
-    public LoginStep(WebDriver driver) {
-        super(driver);
-
-        loginPage = new LoginPage(driver);
+    public LoginStep() {
+        loginPage = new LoginPage();
+        productsPage = new ProductsPage();
     }
 
-    public void login(String email, String psw) {
-        loginPage.setEmail(email);
+    public void login(String user, String psw) {
+        loginPage.setEmail(user);
         loginPage.setPsw(psw);
         loginPage.clickLoginButton();
     }
 
-    public ProductsPage loginSuccessful(String email, String psw) {
-        login(email, psw);
-
-        return new ProductsPage(driver);
+    public ProductsPage loginSuccessful(String user, String psw)  {
+        login(user, psw);
+        return page(ProductsPage.class);
     }
 
-    public LoginPage loginIncorrect(String email, String psw) {
-        login(email, psw);
 
-        return loginPage;
-    }
-
-    public void logout() {
-
+    public LoginPage loginIncorrect(String user, String psw) {
+        login(user, psw);
+        return page(LoginPage.class);
     }
 }
