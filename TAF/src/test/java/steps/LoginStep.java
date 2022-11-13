@@ -33,7 +33,5 @@ public class LoginStep extends BaseStep {
         return loginPage;
     }
 
-    public void logout() {
 
-    }
 }

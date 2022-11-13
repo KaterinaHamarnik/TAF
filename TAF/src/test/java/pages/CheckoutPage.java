@@ -4,20 +4,37 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class CheckoutPage extends BasePage {
-    // Блок описания селекторов для элементов
-    private final By addToCardButtonLocator = By.id("add-to-cart-sauce-labs-backpack");
-    private final By shoppingCartContainerIconLocator = By.id("shopping_cart_container");
-    private final By checkoutButtonLocator = By.id("checkout");
-    private final By firstNameLocator = By.id("first-name");
-    private final By lastNameLocator = By.id("last-name");
-    private final By postalCodeLocator = By.id("postal-code");
-    private final By continueButtonLocator = By.className("submit-button");
-    private final By finishButtonLocator = By.className("btn_action");
-    private final By errorTextLocator = By.className("error-message-container");
-    private final By infoOfElementLocator = By.className("inventory_item_name");
-    private final By cancelButtonLocator = By.id("cancel");
+    @FindBy(id = "add-to-cart-sauce-labs-backpack")
+    public WebElement addToCardButton;
+    @FindBy(id = "shopping_cart_container")
+    public WebElement shoppingCartContainerIcon;
+
+    @FindBy(id = "checkout")
+    public WebElement checkoutButton;
+
+    @FindBy(id = "first-name")
+    public WebElement firstName;
+
+    @FindBy(id = "last-name")
+    public WebElement lastName;
+
+    @FindBy(id = "postal-code")
+    public WebElement postalCode;
+
+    @FindBy(id = "submit-button")
+    public WebElement continueButton;
+
+    @FindBy(className = "btn_action")
+    public WebElement finishButton;
+
+    @FindBy(id = "inventory_item_name")
+    public WebElement infoOfElement;
+
+    @FindBy(id = "cancel")
+    public WebElement cancelButton;
 
 
 
@@ -26,37 +43,19 @@ public class CheckoutPage extends BasePage {
         super(driver);
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return checkoutButtonLocator;
-    }
-
-    // Блок атомарных методов
-    public WebElement getAddToCardButton() { return driver.findElement(addToCardButtonLocator); }
-    public WebElement getShoppingCartContainer() { return driver.findElement(shoppingCartContainerIconLocator); }
-    public WebElement getFirstName() { return driver.findElement(firstNameLocator); }
-    public WebElement getLastNameButton() { return driver.findElement(lastNameLocator); }
-    public WebElement getPostalCodeButton() { return driver.findElement(postalCodeLocator); }
-    public WebElement getCheckoutButton() { return driver.findElement(checkoutButtonLocator); }
-    public WebElement getContinueButton() { return driver.findElement(continueButtonLocator); }
-    public WebElement getFinishButton() { return driver.findElement(finishButtonLocator); }
-    public WebElement getErrorTextElement() { return driver.findElement(errorTextLocator); }
-    public WebElement getInfoOfElementElement() { return driver.findElement(infoOfElementLocator); }
-    public WebElement getCancelButton() { return driver.findElement(cancelButtonLocator); }
 
 
 
-
-    public void clickAddToCardButton() { getAddToCardButton().click(); }
-    public void clickShoppingCartContainerIcon() { getShoppingCartContainer().click(); }
-    public void clickCheckoutButton() { getCheckoutButton().click(); }
-    public void setFirstName(String value) { getFirstName().sendKeys(value); }
-    public void setLastName(String value) { getLastNameButton().sendKeys(value); }
-    public void setPostalCode(String value) { getPostalCodeButton().sendKeys(value); }
-    public void clickContinueButton() { getContinueButton().click(); }
-    public void clickFinishButton() { getFinishButton().click(); }
-    public void clickInfoOfElement() { getInfoOfElementElement().click(); }
-    public void clickCancelButton() { getCancelButton().click(); }
+    public void clickAddToCardButton() { addToCardButton.click(); }
+    public void clickShoppingCartContainerIcon() { shoppingCartContainerIcon.click(); }
+    public void clickCheckoutButton() { checkoutButton.click(); }
+    public void setFirstName(String value) { firstName.sendKeys(value); }
+    public void setLastName(String value) { lastName.sendKeys(value); }
+    public void setPostalCode(String value) { postalCode.sendKeys(value); }
+    public void clickContinueButton() { continueButton.click(); }
+    public void clickFinishButton() { finishButton.click(); }
+    public void clickInfoOfElement() { infoOfElement.click(); }
+    public void clickCancelButton() { cancelButton.click(); }
 
 
 }

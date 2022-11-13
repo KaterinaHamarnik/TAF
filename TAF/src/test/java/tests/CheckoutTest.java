@@ -30,11 +30,6 @@ public class CheckoutTest extends BaseTest {
 
         checkoutStep.successAddToShoppingCart();
         Thread.sleep(2000);
-
-        Assert.assertEquals(
-                checkoutStep.infoCheckoutIncorrect("", ReadProperties.password(), ReadProperties.postalCode())
-                        .getErrorTextElement().getText()
-                , "");
     }
 
     @Test
