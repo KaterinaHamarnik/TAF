@@ -1,10 +1,9 @@
 package dbEntitties;
 
-import models.Customer;
+import models.CustomerBuilder;
 import services.DataBaseService;
 
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class CustomersTable {
     private DataBaseService dataBaseService;
@@ -34,11 +33,11 @@ public class CustomersTable {
         dataBaseService.executeSQL(createTableSQL);
     }
 
-    public void addCustomer(CustomerBuilder customer) {
+    public void addCustomer(CustomerBuilder customerBuilder) {
         String insertTableSQL = "INSERT INTO public.Customers(" +
                 "first_name, last_name, email, age)" +
-                "VALUES ('" + customer.getFirst_name() + "', '" + customer.getLast_name() +
-                "', '" + customer.getEmail() + "', " + customer.getAge() + ");";
+                "VALUES ('" + customerBuilder.getFirst_name() + "', '" + customerBuilder.getLast_name() +
+                "', '" + customerBuilder.getEmail() + "', " + customerBuilder.getAge() + ");";
 
         dataBaseService.executeSQL(insertTableSQL);
     }
