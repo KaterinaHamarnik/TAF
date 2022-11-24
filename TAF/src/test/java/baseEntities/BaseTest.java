@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import services.BrowsersService;
 import steps.LoginStep;
 
-public class BaseTest {
+public abstract class BaseTest {
     protected WebDriver driver;
     protected LoginStep loginStep;
 
@@ -23,5 +23,4 @@ public class BaseTest {
     public void tearDown() {
         driver.quit();
     }
-
 }
